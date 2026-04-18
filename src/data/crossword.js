@@ -17,7 +17,7 @@ export const crossword = {
     { num: 6,  start: 2, word: 'DAŇOVÁ',   hint: '... základna (základ pro výpočet daně z příjmů)' },
     { num: 7,  start: 3, word: 'ODVOD',    hint: 'Povinná platba státu (daň, pojistné apod.)' },
     { num: 8,  start: 4, word: 'ZÁLOHA',   hint: 'Platba předem před dodáním plnění' },
-    { num: 9,  start: 1, word: 'LICENCE',   hint: 'Pokuta za porušení daňových nebo účetních předpisů' },
+    { num: 9,  start: 1, word: 'SANKCE',   hint: 'Pokuta za porušení daňových nebo účetních předpisů' },
     { num: 10, start: 0, word: 'ÚČETNÍ',   hint: '... závěrka (povinný výkaz sestavovaný na konci roku)' },
   ],
 }
