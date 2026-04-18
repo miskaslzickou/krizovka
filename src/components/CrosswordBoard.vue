@@ -50,7 +50,7 @@ function handleInput(ri, li, e) {
 }
 
 function handleKeydown(ri, li, e) {
-  if (rowStates.value[ri] !== 'idle') { e.preventDefault(); return }
+  
   switch (e.key) {
     case 'Backspace':
       if (!inputs.value[ri][li]) {
@@ -58,13 +58,17 @@ function handleKeydown(ri, li, e) {
         if (li > 0) { inputs.value[ri][li - 1] = ''; focusCell(ri, li - 1) }
       }
       break
-    case 'Enter': 
-    e.preventDefault(); 
-  // Zkontroluje, jestli nejsme na posledním řádku a jestli je další řádek aktivní ('idle')
-    if (ri < rows.length - 1 && rowStates.value[ri + 1] === 'idle') {
-      focusCell(ri + 1, 0); 
-      }
-  break;
+    case 'Enter':
+      for (let i = 1; i < rows.length; i++) {
+        // Zjistíme index dalšího řádku (díky % rows.length se po posledním řádku vrátíme na první)
+        const nextRow = (ri + i) % rows.length;
+        
+        // Pokud najdeme řádek, který čeká na vyplnění, skočíme na jeho první písmeno a končíme
+        if (rowStates.value[nextRow] === 'idle') {
+          focusCell(nextRow, 0);
+          break;
+        }
+      }break
     case 'ArrowRight': e.preventDefault(); if (li < rows[ri].word.length - 1) focusCell(ri, li + 1); break
     case 'ArrowLeft':  e.preventDefault(); if (li > 0) focusCell(ri, li - 1); break
     case 'ArrowDown':  e.preventDefault(); moveFocusVertical(ri, li,  1); break
