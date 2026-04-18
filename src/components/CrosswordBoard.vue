@@ -58,6 +58,13 @@ function handleKeydown(ri, li, e) {
         if (li > 0) { inputs.value[ri][li - 1] = ''; focusCell(ri, li - 1) }
       }
       break
+    case 'Enter': 
+    e.preventDefault(); 
+  // Zkontroluje, jestli nejsme na posledním řádku a jestli je další řádek aktivní ('idle')
+    if (ri < rows.length - 1 && rowStates.value[ri + 1] === 'idle') {
+      focusCell(ri + 1, 0); 
+      }
+  break;
     case 'ArrowRight': e.preventDefault(); if (li < rows[ri].word.length - 1) focusCell(ri, li + 1); break
     case 'ArrowLeft':  e.preventDefault(); if (li > 0) focusCell(ri, li - 1); break
     case 'ArrowDown':  e.preventDefault(); moveFocusVertical(ri, li,  1); break
