@@ -172,7 +172,7 @@ const isSolved = computed(() => {
   --border: #b0bec5;
   --tajenka-yellow:      #fde68a;
   --tajenka-yellow-dark: #fbbf24;
-
+  margin-right: 3%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -225,7 +225,7 @@ const isSolved = computed(() => {
 .cell--wrong.cell--tajenka { --cell-bg: #fca5a5; }
 .cell--wrong input          { color: #dc2626; }
 
-.cell--correct              { --cell-bg: #dcfce7; }
+.cell--correct              { --cell-bg: #bdcac2; }
 .cell--correct.cell--tajenka{ --cell-bg: #86efac; }
 .cell--correct input        { color: #15803d; }
 
