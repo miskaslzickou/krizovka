@@ -19,10 +19,12 @@ import { crossword } from './data/crossword.js'
 </template>
 
 <style scoped>
+
 .app {
   padding: 1.5rem 1rem 4rem;
   max-width: 960px;
   margin: 0 auto;
+   overflow-x: hidden;
 }
 
 .app-header {

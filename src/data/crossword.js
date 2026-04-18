@@ -1,24 +1,23 @@
 export const crossword = {
-  id: 'odpisovani',
+  id: 'odpisovani_kratke',
   title: 'Křížovka',
   subtitle: 'Účtování dlouhodobého majetku',
  
-  // Tajenka 'ODPISOVÁNÍ' – každý řádek musí mít správné písmeno na sloupci 5 (0-indexed)
-  tajenkaCol: 5,
+  // Tajenka 'ODPISOVÁNÍ' – každý řádek musí mít správné písmeno na sloupci 2 (0-indexed)
+  tajenkaCol: 2,
   tajenkaWord: 'ODPISOVÁNÍ',
-  totalCols: 11,
+  totalCols: 7, // Nejdelší přesah je u slova STROJ (start 2 + 5 písmen = 7)
  
   rows: [
-    { num: 1,  start: 5, word: 'OBDOBÍ',   hint: 'Účetní ... (časový interval, za který se sestavuje závěrka)' },
-    { num: 2,  start: 3, word: 'BUDOVA',   hint: 'Typický dlouhodobý hmotný NEMOVITÝ majetek' },
-    { num: 3,  start: 3, word: 'ODPIS',    hint: 'Peněžní vyjádření opotřebení majetku za období' },
-    { num: 4,  start: 2, word: 'MAJITEL',  hint: 'Vlastník dlouhodobého majetku (fyzická nebo právnická osoba)' },
-    { num: 5,  start: 5, word: 'SOFTWARE', hint: 'Příklad nehmotného majetku, který se odpisuje' },
-    { num: 6,  start: 2, word: 'DAŇOVÁ',   hint: '... základna (základ pro výpočet daně z příjmů)' },
-    { num: 7,  start: 3, word: 'ODVOD',    hint: 'Povinná platba státu (daň, pojistné apod.)' },
-    { num: 8,  start: 4, word: 'ZÁLOHA',   hint: 'Platba předem před dodáním plnění' },
-    { num: 9,  start: 1, word: 'SANKCE',   hint: 'Pokuta za porušení daňových nebo účetních předpisů' },
-    { num: 10, start: 0, word: 'ÚČETNÍ',   hint: '... závěrka (povinný výkaz sestavovaný na konci roku)' },
+    { num: 1,  start: 1, word: 'DOBA',  hint: 'Délka v letech, po kterou se majetek postupně odpisuje' },
+    { num: 2,  start: 0, word: 'SAD',   hint: 'Pěstitelský celek trvalých porostů (specifický druh dlouhodobého majetku)' },
+    { num: 3,  start: 2, word: 'PES',   hint: 'Služební ... (zvíře, které se eviduje jako dlouhodobý majetek)' },
+    { num: 4,  start: 1, word: 'MÍRA',   hint: '... opotřebení majetku (vyjadřuje, jak moc majetek fyzicky či morálně ztratil na hodnotě)' },
+    { num: 5,  start: 2, word: 'STROJ', hint: 'Výrobní zařízení v továrně (typický hmotný majetek)' },
+    { num: 6,  start: 1, word: 'LOĎ',   hint: 'Větší plavidlo (dopravní prostředek evidovaný jako majetek)' },
+    { num: 7,  start: 2, word: 'VĚC',   hint: 'Hmotná movitá ... (základní kategorie dlouhodobého majetku)' },
+    { num: 8,  start: 0, word: 'PLÁN',  hint: 'Odpisový ... (dokument obsahující rozvrh a sazby odpisování)' },
+    { num: 9,  start: 0, word: 'CENA',  hint: 'Vstupní ... (výchozí částka, ze které se počítají odpisy)' },
+    { num: 10, start: 1, word: 'DÍLO',  hint: 'Umělecké ... (majetek, který se neodpisuje, protože neztrácí hodnotu)' },
   ],
 }
- 

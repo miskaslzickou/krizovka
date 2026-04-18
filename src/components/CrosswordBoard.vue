@@ -168,19 +168,24 @@ const isSolved = computed(() => {
 <style scoped>
 /* ── Proměnné ────────────────────────────────────────────────────────────── */
 .board {
-  --cell:   50px;
+  /*
+   * --cell se automaticky přizpůsobí šířce viewportu:
+   * (100vw - 2rem padding) / totalCols → min 22px, max 50px
+   * Žádný overflow, žádné media breakpointy pro velikost buňky.
+   */
+  --cell: clamp(22px, calc((100vw - 2rem) / var(--total-cols)), 50px);
   --border: #b0bec5;
   --tajenka-yellow:      #fde68a;
   --tajenka-yellow-dark: #fbbf24;
-  margin-right: 3%;
+
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  
   gap: 1.5rem;
-}
-
-@media (max-width: 560px) {
-  .board { --cell: 36px; }
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 1rem;
 }
 
 /* ── CSS Grid mřížka ─────────────────────────────────────────────────────── */
@@ -188,18 +193,11 @@ const isSolved = computed(() => {
   display: grid;
   grid-template-columns: repeat(var(--total-cols), var(--cell));
   grid-auto-rows: var(--cell);
-  /* Šířka přesně ohraničuje obsazené sloupce */
   width: calc(var(--total-cols) * var(--cell));
+  max-width: 100%;
 }
 
 /* ── Políčko ────────────────────────────────────────────────────────────── */
-/*
- * Strategie bez zdvojeného okraje:
- *   – každá buňka má VŽDY border-right + border-bottom
- *   – border-top  = jen pokud nad buňkou není jiná buňka  (třída .cell--top)
- *   – border-left = jen první buňka v řádku (li === 0)    (třída .cell--left)
- * → každá hrana mřížky se nakreslí přesně jednou.
- */
 .cell {
   box-sizing: border-box;
   width:  var(--cell);
@@ -213,8 +211,6 @@ const isSolved = computed(() => {
 
 .cell--top  { border-top:  1px solid var(--border); }
 .cell--left { border-left: 1px solid var(--border); }
-
-/* Tajenka sloupec – žlutý */
 .cell--tajenka { --cell-bg: var(--tajenka-yellow); }
 
 /* ── Validační stavy ────────────────────────────────────────────────────── */
@@ -225,9 +221,9 @@ const isSolved = computed(() => {
 .cell--wrong.cell--tajenka { --cell-bg: #fca5a5; }
 .cell--wrong input          { color: #dc2626; }
 
-.cell--correct              { --cell-bg: #bdcac2; }
-.cell--correct.cell--tajenka{ --cell-bg: #86efac; }
-.cell--correct input        { color: #15803d; }
+.cell--correct               { --cell-bg: #90d1a9; }
+.cell--correct.cell--tajenka { --cell-bg: #86efac; }
+.cell--correct input         { color: #15803d; }
 
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
@@ -241,7 +237,7 @@ const isSolved = computed(() => {
 .cell__num {
   position: absolute;
   top: 1px; left: 2px;
-  font-size: 9px;
+  font-size: clamp(6px, 1.8vw, 9px);
   font-weight: 700;
   color: #78909c;
   pointer-events: none;
@@ -257,7 +253,7 @@ const isSolved = computed(() => {
   border: none;
   background: transparent;
   text-align: center;
-  font-size: clamp(0.8rem, 2.8vw, 1.1rem);
+  font-size: clamp(0.6rem, 3.5vw, 1.1rem);
   font-weight: 700;
   color: #1a1a2e;
   text-transform: uppercase;
@@ -285,7 +281,11 @@ const isSolved = computed(() => {
   color: #78909c;
 }
 
-.tajenka__cells { display: flex; gap: 4px; }
+.tajenka__cells {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;  /* zalamuje na velmi malých displejích */
+}
 
 .tajenka__cell {
   box-sizing: border-box;
@@ -296,7 +296,7 @@ const isSolved = computed(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: clamp(0.8rem, 2.8vw, 1.1rem);
+  font-size: clamp(0.6rem, 3.5vw, 1.1rem);
   font-weight: 700;
   color: #a16207;
   text-transform: uppercase;
