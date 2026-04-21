@@ -32,7 +32,7 @@ defineProps({
 }
 
 .clues__title {
-  font-size: 0.95rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: #37474f;
   margin-bottom: 0.15rem;
@@ -64,14 +64,14 @@ defineProps({
 
 .clues__num {
   font-weight: 700;
-  font-size: 0.78rem;
+  font-size: 0.98rem;
   color: #fbbf24;
   min-width: 1.4rem;
   flex-shrink: 0;
 }
 
 .clues__text {
-  font-size: 0.87rem;
+  font-size: 1rem;
   color: #455a64;
 }
 
